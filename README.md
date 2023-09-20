@@ -149,3 +149,104 @@ Data base labs of 5th semester will be stored in this repository
 
 
 4. Ограничения
+
+   1. Users
+      - u_id: int PK autoincrement
+      - fio: varchar(100) not null
+      - email: varchar(64) not null unique
+      - ld_id: int Foreign Key
+      - с_id: int Foreign Key
+      - r_id: int Foreign Key
+
+
+   2. LogData
+      - l_id: int Primary Key autoincrement
+      - u_id: int Foreign Key
+      - password: varchar(30) not null
+      - login: varchar(30) not null unique
+
+
+   3. Roles 
+      - r_id: int Primary Key autoincrement
+      - r_name: varchar(20) unique not null
+      - r_description: text
+
+
+   4. Cards
+      - card_id: int Primary Key autoincrement
+      - card_number: varchar(16) not null
+
+
+   5. Products 
+      - p_id: int Primary Key autoincrement
+      - al_id: int Foreign Key
+      - ar_id: int Foreign Key
+      - cat_id: int Foreign Key
+      - m_id: int Foreign Key
+      - p_year: int not null
+      - p_name: varchar(100) not null
+      - p_description: text
+      - p_price: double not null
+
+
+   6. Category 
+      - cat_id: int Primary Key autoincrement
+      - cat_name: varchar(20) not null
+       
+
+   7. Genre 
+      - g_id: int Primary Key autoincrement
+      - g_name: varchar(30) not null
+   
+   8. AlbumGenre
+      - al_id: Primary Key, Указывает на свзанный альбом
+      - g_id: Primary Key, Указывает на связанный жанр
+        
+
+    9. ArtistGenre (Composite PK)
+       - ar_id: int Primary Key
+       - g_id: int Primary Key
+
+
+   10. Artist
+      - ar_id: int Primary Key autoincrement
+      - ar_name: varchar(30) not null
+      - ar_solled: int not null
+      - ar_description: text
+
+
+   11. Album 
+      - al_id: int Primary Key autoincrement
+      - al_name: varchar(30) not null
+      - al_year: int not null
+      - ar_id: int Foreign Key
+      - al_solled: int not null
+
+
+   12. Manufacturers
+      - m_id: int Primary Key autoincrement
+      - m_name: varchar(30) not null
+      - m_adress: text not null
+
+
+   13. OrderedProducts (Composite PK)
+      - o_id: int Primary Key
+      - p_id: int Primary Key
+      - op_ammount: int not null
+
+
+   14. Orders
+      - o_id: int Primary Key autoincrement
+      - u_id: int Foreign Key
+      - o_datetime: datetime not null
+      - o_del_status: varchar(30) not null
+      - o_pay_status: boolean not null
+      - o_adress: text not null
+      - o_total_cost: double not null
+   
+
+   15. Stock
+      - s_id: int Primary Key autoincrement
+      - p_id: int Foreign Key
+      - ammount: int not null
+   
