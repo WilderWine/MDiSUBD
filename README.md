@@ -9,9 +9,12 @@ Data base labs of 5th semester will be stored in this repository
   
 2. Минимальные функциональные требования:
    * Авторизация пользователя
+   * Возможность совершения покупки
+   * Удобная сортировка товаров
    * Управление пользователями (CRUD)
    * Система ролей
    * Журналирование действий пользователя
+   * Сбор данных для выявления рейтинга товаров определенного типа / исполнителя
   
 3. Сущности:
    1. Users (Пользователь)
@@ -28,7 +31,7 @@ Data base labs of 5th semester will be stored in this repository
    2. LogData (Данные входа)
       * Данные пользователей, необходимые для аутентификации
 
-      - l_id: Primary Key, Уникальный идентификатор данных входа
+      - ld_id: Primary Key, Уникальный идентификатор данных входа
       - u_id: Foreign Key, Указывает на пользователя, которому принадлежат данные (Уникальный)
       - password: Пароль пользователя
       - login: Логин пользователя (Уникальный)
@@ -63,7 +66,7 @@ Data base labs of 5th semester will be stored in this repository
       - p_price: Цена на едтиницу товара
 
 
-   6. Category (Категория)
+   6. Categories (Категория)
       * Категория товаров, с помощью которой можно отсортировать их и получить список       
         альтернативных товаров (кассеты/пластинки и т.п.)
 
@@ -71,7 +74,7 @@ Data base labs of 5th semester will be stored in this repository
       - cat_name: Название категории товара
        
 
-   7. Genre (Жанр)
+   7. Genres (Жанр)
       * Жанр непосредственно музыкального товара/альбома/исполнителя
         
       - g_id: Primary Key, Уникальный идентификатор музыкального жанра
@@ -91,7 +94,7 @@ Data base labs of 5th semester will be stored in this repository
        - g_id: Primary Key, Указывает на связанный жанр
 
 
-   10. Artist (Исполнитель)
+   10. Artists (Исполнитель)
       * Информация об исполнителе, рейтинг
 
       - ar_id: Primary Key, Уникальный идентификатор исполнителя
@@ -100,7 +103,7 @@ Data base labs of 5th semester will be stored in this repository
       - ar_description: Краткая информация об исполнителе
 
 
-   11. Album (Альбом)
+   11. Albums (Альбом)
       * Информация об альбоме, рейтинг
      
       - al_id: Primary Key, Уникальный идентификатор альбома
@@ -183,10 +186,10 @@ Data base labs of 5th semester will be stored in this repository
       - ar_id: int Foreign Key
       - cat_id: int Foreign Key
       - m_id: int Foreign Key
-      - p_year: int not null
+      - p_year: int not null (>0)
       - p_name: varchar(100) not null
       - p_description: text
-      - p_price: double not null
+      - p_price: double not null (>0)
 
 
    6. Category 
@@ -211,16 +214,16 @@ Data base labs of 5th semester will be stored in this repository
    10. Artist
       - ar_id: int Primary Key autoincrement
       - ar_name: varchar(30) not null
-      - ar_solled: int not null
+      - ar_solled: int not null (>0)
       - ar_description: text
 
 
    11. Album 
       - al_id: int Primary Key autoincrement
       - al_name: varchar(30) not null
-      - al_year: int not null
+      - al_year: int not null (>0)
       - ar_id: int Foreign Key
-      - al_solled: int not null
+      - al_solled: int not null (>=0)
 
 
    12. Manufacturers
@@ -232,7 +235,7 @@ Data base labs of 5th semester will be stored in this repository
    13. OrderedProducts (Composite PK)
       - o_id: int Primary Key
       - p_id: int Primary Key
-      - op_ammount: int not null
+      - op_ammount: int not null (>0)
 
 
    14. Orders
@@ -242,11 +245,11 @@ Data base labs of 5th semester will be stored in this repository
       - o_del_status: varchar(30) not null
       - o_pay_status: boolean not null
       - o_adress: text not null
-      - o_total_cost: double not null
+      - o_total_cost: double not null (>0)
    
 
    15. Stock
       - s_id: int Primary Key autoincrement
       - p_id: int Foreign Key
-      - ammount: int not null
+      - ammount: int not null (>=0)
    
