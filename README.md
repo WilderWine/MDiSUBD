@@ -144,9 +144,9 @@ Data base labs of 5th semester will be stored in this repository
       - s_id: Primary Key, Уникальный идентификатор единицы на складе
       - p_id: Foreign Key, Указывает на id товара, подсчет которого ведется
       - ammount: Количество оставшихся в наличии единиц конкретного товара
-   
 
-  14. Cart (Корзина)
+
+     14. Cart (Корзина)
       * Список товаров, которые пользователь хочет заказать и поместил в корзину
      
       - cart_id: Primary Key, Уникальный идентификатор корзины
@@ -159,7 +159,7 @@ Data base labs of 5th semester will be stored in this repository
       - u_id: int PK autoincrement
       - fio: varchar(100) not null
       - email: varchar(64) not null unique
-      - ld_id: int Foreign Key
+      - cart_id: int Foreign Key
       - с_id: int Foreign Key
       - r_id: int Foreign Key
       - password: varchar(300) not null (в зашифрованном виде)
