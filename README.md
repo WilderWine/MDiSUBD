@@ -169,7 +169,7 @@ Data base labs of 5th semester will be stored in this repository
    2. Roles 
       - r_id: int Primary Key autoincrement
       - r_name: varchar(20) unique not null
-      - r_description: text
+      - r_description: varchar(1000)
 
 
    3. Cards
@@ -185,7 +185,7 @@ Data base labs of 5th semester will be stored in this repository
       - m_id: int Foreign Key
       - p_year: int not null (>0)
       - p_name: varchar(100) not null
-      - p_description: text
+      - p_description: varchar(1000)
       - p_price: double not null (>0)
 
 
@@ -204,7 +204,7 @@ Data base labs of 5th semester will be stored in this repository
       - ar_id: int Primary Key autoincrement
       - ar_name: varchar(30) not null
       - ar_solled: int not null (>0)
-      - ar_description: text
+      - ar_description: varchar(1000)
 
 
    8. Album 
@@ -218,7 +218,7 @@ Data base labs of 5th semester will be stored in this repository
    9. Manufacturers
       - m_id: int Primary Key autoincrement
       - m_name: varchar(30) not null
-      - m_adress: text not null
+      - m_adress: varchar(1000) not null
 
 
    10. OrderedProducts (Composite PK)
@@ -232,7 +232,7 @@ Data base labs of 5th semester will be stored in this repository
       - cartp_ammount: int not null (>0)
 
 
-   11. Orders
+   12. Orders
       - o_id: int Primary Key autoincrement
       - u_id: int Foreign Key
       - o_datetime: datetime not null
@@ -242,9 +242,9 @@ Data base labs of 5th semester will be stored in this repository
       - o_total_cost: double not null (>0)
    
 
-   12. Stock
+   13. Stock
       - s_id: int Primary Key autoincrement
-      - p_id: int Foreign Key
+      - p_id: int Primary Key
       - ammount: int not null (>=0)
 
    14. Cart (Корзина)
@@ -252,29 +252,22 @@ Data base labs of 5th semester will be stored in this repository
       - u_id: int Foreign Key
 
 
-  2 Лабораторная (недосущности на будущее)
+ЛАБОРАТОРНАЯ 2: 
+  *Добавление таблицы связей
 
-   7. AlbumGenre (Жанры альбома)
-      * Промежуточная таблица из-за возможности мультижанрового альбома
+   1. AlbumGenre (Жанры альбома) 
+      * Добавление таблицы связей для реализации связи мнокие ко многим у сущностей Album-Genre
 
       - al_id: Primary Key, Указывает на свзанный альбом
       - g_id: Primary Key, Указывает на связанный жанр
         
 
-    8. ArtistGenre (Жанры производителя)
-       * Промежуточная таблица из-за возможности работы исполнителя в нескольких жанрах
+    2. ArtistGenre (Жанры производителя)
+       * Добавление таблицы связей для реализации связи мнокие ко многим у сущностей Artist-Genre
 
        - ar_id: Primary Key, Указывает на свзанного исполнителя
        - g_id: Primary Key, Указывает на связанный жанр
 
-      7. AlbumGenre
-      - al_id: Primary Key, Указывает на свзанный альбом
-      - g_id: Primary Key, Указывает на связанный жанр
-        
-
-    9. ArtistGenre (Composite PK)
-       - ar_id: int Primary Key
-       - g_id: int Primary Key
-
+    Требования к полям обоимх таблиц: int, not null
 
    
