@@ -59,7 +59,6 @@ Data base labs of 5th semester will be stored in this repository
 
       - p_id: Primary Key, Уникальныq идентификатор наименования товара
       - al_id: Foreign Key, Указывает на альбом
-      - ar_id: Foreign Key, Указывает на исполнителя
       - cat_id: Foreign Key, Категория товара
       - m_id: Foreign Key, Производитель товара
       - p_year: Год производства товара
@@ -180,7 +179,6 @@ Data base labs of 5th semester will be stored in this repository
    4. Products 
       - p_id: int Primary Key autoincrement
       - al_id: int Foreign Key
-      - ar_id: int Foreign Key
       - cat_id: int Foreign Key
       - m_id: int Foreign Key
       - p_year: int not null (>0)
@@ -269,5 +267,9 @@ Data base labs of 5th semester will be stored in this repository
        - g_id: Primary Key, Указывает на связанный жанр
 
     Требования к полям обоимх таблиц: int, not null
+  
+  *Из таблицы "Products" удален столбец "ar_id", ячейки которого ссылаются на исполнителя (сущность Artist)
+    - Существует некоторая связь между альбомами и исполнителями, таким образом, приводя таблицу к 3НФ замечаем, что ar_id зависит от неключевого атрибута al_id
+
 
    
